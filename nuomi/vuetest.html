@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<title>表单验证</title>
+	<style>
+	*{
+		font-size:14px;
+		font-family: "微软雅黑";
+		padding:0; margin:0;
+	}
+	body{
+		background-color: rgb(247,247,249);
+	}
+	.container{
+		width: 100%;
+		height: 100%
+		border:1px solid #CCCCCC;
+	}
+	.shadow{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0.5;
+            z-index: 800;
+            background-color: #ABABAB;
+        }
+	.wrap{
+		background-color: #FFFFFF;
+		border-top: 1px solid #CCCCCC;
+       border-bottom: 1px solid #CCCCCC;
+       padding-left: 7px;
+	}
+	.top{
+		padding:7px 0 ;
+		border-bottom: 1px solid #CCCCCC;
+	}
+	.bottom{
+		padding:7px 0 ;
+	}
+	.wrap1{
+		margin:30px 0 ;
+		padding:7px 0 7px 7px;
+	}
+	input{
+			border:none;
+			width: 45%;
+            -webkit-appearance:none;
+		}
+		select{
+			display: none;
+			width: 100%;
+		   position: absolute;
+		   bottom: 0;
+		   -webkit-appearance:none;
+		}
+	span{
+           width: 25%;
+           margin-right: 5%;
+           display: inline-block;
+		}
+	.btn{
+		display: inline-block;
+		  width:80%;
+		  height: 50px;
+		  border-radius: 5px;
+		  margin:0 auto;
+		  margin-top: 30px;
+          background-color: #FF3030;
+          color: #FFFFFF;
+		}
+	.onsale{
+		position: relative;
+	}
+	.chk{
+		width: 20px;
+		height: 20px;
+		position: absolute;
+		top:6px;
+		right: 10px;
+	}
+	.type{
+		background-color:#FFFFFF;
+		position: absolute;
+		left:0;
+		bottom: 0;
+		right: 0;
+		display: none;
+		z-index: 1000;
+	}
+	.opt{
+		padding:7px 0 7px 7px;
+		border-bottom: 1px solid #CCCCCC;
+	}
+	.redSel{
+        display: none;
+	}
+	</style>
+</head>
+<body>
+	<div class="container" id="container">
+	  <div class="shadow" id="shadow" style="display: none"></div>
+	  <validator name="validation1">
+	  <form>
+		 <div class="wrap">
+			<div class="top">
+			 	<span>商家名称</span>
+			 	<input  type="text" placeholder='请输入名称'  value="{{merchantName}}" v-validate:merchantName="['Mername']"/>
+			</div>
+		    <div class="bottom">
+			 	<span>商家电话</span>
+			 	<input  type="text"  value="{{merchantTel}}" v-validate:merchantTel="['MerTel']"/>
+			 </div>
+		 </div>
+	        <div class="wrap wrap1">
+	        	<span>团购价</span>
+			 	<input type="text"  placeholder='不可点击的'  onfocus="this.blur();" value="{{price}}" v-validate:price="['Numberic']"/>
+	        </div>
+	        <div class="wrap">
+				<div class="top onsale" onclick="BindImg()">
+				 	<span>是否打折</span>
+			 		<img src="IMG/img1.png" class="chk" id="chk1" />
+
+				</div>
+			    <div class="bottom onsale showShadow" id="jobtype">
+				 	<span>行业类型</span>
+				 	<input type="text"  placeholder='请选择' id="typeinput" value="{{industryType}}" ><img src="IMG/right1.png" class="chk">
+
+				 </div>
+		    </div>
+	        <div style="text-align:center"><input type="submit" value="提交" class="btn"  /></div>
+	        <div class="type" id="sel" >
+	                <div class="onsale"><div id="opt0" value="0" class="opt">取消</div><img src="IMG/select.png" class="chk redSel" id="opt00"></div>
+	                <div class="onsale"><div id="opt1" value="1" class="opt">餐饮</div><img src="IMG/select.png" class="chk redSel" id="opt10"></div>
+	                <div class="onsale"><div id="opt2" value="2" class="opt">美甲</div><img src="IMG/select.png" class="chk redSel" id="opt20"></div>
+	                <div class="onsale"><div id="opt3" value="3" class="opt">旅游</div><img src="IMG/select.png" class="chk redSel" id="opt30"></div>
+	                <div class="onsale"><div id="opt4" value="4" class="opt">快递</div><img src="IMG/select.png" class="chk redSel" id="opt40"></div>
+	                <div class="onsale"><div id="opt5" value="5" class="opt">亲子</div><img src="IMG/select.png" class="chk redSel" id="opt50"></div>
+             </div>
+	  </form>
+	   <div class="errors">
+	      <validator-errors:validation="$validation1"></validator-errors>
+	   </div>
+	   <validator>
+	</div>
+	<script src="https://cdn.bootcss.com/vue/1.0.17/vue.js"></script>
+	<script src="https://cdn.bootcss.com/vue-validator/2.0.0-alpha.22/vue-validator.js"></script>
+	<!-- <script src="JS/vue.js"></script>
+	<script src="https://cdn.jsdelivr.net/vue.validator/2.1.3/vue-validator.min.js"></script> -->
+    <script src="JS/jquery-2.2.4.js"></script>
+     <script type="text/javascript">
+
+	     $(function(){
+		    var container = $('.container');
+            var shadow = $('#shadow');
+		    container.on('click',function(){
+		        if(shadow.css('display')=='block'){
+		            shadow.css('display','none');
+                    $('#sel').css('display','none');
+		        }
+		    });
+			 $(".opt").click(function (e) {
+                 $('.opt').each(function(){
+                     $(this).css('color','black');
+                 })
+                 $('.redSel').each(function(){
+                     $(this).css('display','none');
+                 })
+				 var v_id = $(e.target).attr('id');
+				 $('#'+v_id).css('color', '#CD2626');
+                 $('#typeinput').val($('#'+v_id).text())
+                 $('#'+v_id+'0').css('display', 'block');
+                 $('#sel').hide();
+                 shadow.hide();
+			 });
+             $('#jobtype').on('click',function(e){
+                 if($('#sel').css("display")=="none"){
+                     $('#sel').css('display','block');
+                     shadow.show();
+                     e.stopPropagation();
+                 }else{
+                     $('#sel').css('display','none');
+                     shadow.hide();
+                     e.stopPropagation();
+                 }
+             })
+            new Vue({
+                 el: '#container',
+                 validators: {
+				    Mername: { 
+				      message: 'invalid merchantName value',
+				      check: function (val) {
+				        return /^[a-zA-Z0-9\u4e00-\u9fa5]{1,20}$/.test(val)
+				      }
+				    },
+				    MerTel: { 
+				      message: 'invalid Telephone number',				     
+				      check: function (val) {
+				        return /^((\+?86)|(\(\+86\)))?(13[012356789][0-9]{8}|15[012356789][0-9]{8}|18[02356789][0-9]{8}|147[0-9]{8}|1349[0-9]{7})$/.test(val)
+				      }
+				    },
+				     Numberic: { 
+				      message: 'invalid price ',
+				      check: function (val) {
+				        return /^[0-9]+(.[0-9]{2})?$ /.test(val)
+				      }
+				    }
+				},
+                 data: {
+                     merchantName:'杨明宇黄焖鸡米饭',
+                     merchantTel:'010-888888',
+                     price:'20.00',
+                     industryType:'美食',          }
+             })
+	});
+
+     	function BindImg(){
+			$('#chk1').attr('src',$('#chk1').attr('src')=='IMG/img1.png'?'IMG/img2.png':'IMG/img1.png');
+		}
+
+     </script>
+</body>
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<title>表单验证</title>
+	<style>
+	*{
+		font-size:14px;
+		font-family: "微软雅黑";
+		padding:0; margin:0;
+	}
+	body{
+		background-color: rgb(247,247,249);
+	}
+	.container{
+		width: 100%;
+		height: 100%
+		border:1px solid #CCCCCC;
+	}
+	.shadow{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0.5;
+            z-index: 800;
+            background-color: #ABABAB;
+        }
+	.wrap{
+		background-color: #FFFFFF;
+		border-top: 1px solid #CCCCCC;
+       border-bottom: 1px solid #CCCCCC;
+       padding-left: 7px;
+	}
+	.top{
+		padding:7px 0 ;
+		border-bottom: 1px solid #CCCCCC;
+	}
+	.bottom{
+		padding:7px 0 ;
+	}
+	.wrap1{
+		margin:30px 0 ;
+		padding:7px 0 7px 7px;
+	}
+	input{
+			border:none;
+			width: 45%;
+            -webkit-appearance:none;
+		}
+		select{
+			display: none;
+			width: 100%;
+		   position: absolute;
+		   bottom: 0;
+		   -webkit-appearance:none;
+		}
+	span{
+           width: 25%;
+           margin-right: 5%;
+           display: inline-block;
+		}
+	.btn{
+		display: inline-block;
+		  width:80%;
+		  height: 50px;
+		  border-radius: 5px;
+		  margin:0 auto;
+		  margin-top: 30px;
+          background-color: #FF3030;
+          color: #FFFFFF;
+		}
+	.onsale{
+		position: relative;
+
+	}
+	.rightarrow{
+		background: url("IMG/select.png")  right 10px center no-repeat;
+		background-size: 18px 18px ;
+	}
+	.chk{
+		width: 20px;
+		height: 20px;
+		position: absolute;
+		top:6px;
+		right: 10px;
+	}
+	.type{
+		background-color:#FFFFFF;
+		position: absolute;
+		left:0;
+		bottom: 0;
+		right: 0;
+		display: none;
+		z-index: 1000;
+	}
+	.opt{
+		padding:7px 0 7px 7px;
+		border-bottom: 1px solid #CCCCCC;
+	}
+	.redSel{
+        display: none;
+	}
+	</style>
+</head>
+<body>
+	<div class="container">
+	  <div class="shadow" id="shadow" style="display: none" e-type="shadow"></div>
+	  <form>
+		 <div class="wrap">
+			<div class="top">
+			 	<span>商家名称</span>
+			 	<input type="text" placeholder='请输入名称' e-type="merchantName"/>
+			</div>
+		    <div class="bottom">
+			 	<span>商家电话</span>
+			 	<input type="text"  validType="phoneNum" e-type="merchanttel"/>
+			 </div>
+		 </div>
+	        <div class="wrap wrap1">
+	        	<span>团购价</span>
+			 	<input type="number"  placeholder='不可点击的' validType="float" e-type="groupprice"/>
+	        </div>
+	        <div class="wrap">
+				<div class="top onsale" onclick="BindImg()" e-type="ifcount_div" >
+				 	<span>是否打折</span>
+			 		<img src="IMG/img1.png" class="chk" id="chk1" />
+				</div>
+			    <div class="bottom onsale showShadow" id="jobtype"  e-type="industrytype">
+				 	<span>行业类型</span>
+				 	<input type="text"  placeholder='请选择' id="typeinput"/><img src="IMG/right1.png" class="chk">
+
+				 </div>
+		    </div>
+	        <div style="text-align:center"><input type="submit" value="提交" class="btn" e-type="submit" /></div>
+	        <div class="type" id="sel" >
+	                <div class="onsale"><div id="opt0" value="0" e-type="option" class="opt">取消</div></div>
+	                <div class="onsale"><div id="opt1" value="1" e-type="option" class="opt">餐饮</div></div>
+	                <div class="onsale"><div id="opt2" value="2" e-type="option" class="opt">美甲</div></div>
+	                <div class="onsale"><div id="opt3" value="3" e-type="option" class="opt">旅游</div></div>
+	                <div class="onsale"><div id="opt4" value="4" e-type="option" class="opt">快递</div></div>
+	                <div class="onsale"><div id="opt5" value="5" e-type="option" class="opt">亲子</div></div>
+             </div>
+	  </form>
+	</div>
+	<!--<script src="../public/js/common/jquery-1.8.2.min.js"></script>-->
+	<script src="https://cdn.jsdelivr.net/vue.validator/2.1.3/vue-validator.min.js"></script>
+	<script src="JS/vue.js"></script>
+    <script src="JS/jquery-2.2.4.js"></script>
+     <script type="text/javascript">
+		 var chineseNameRe = /^[\u4E00-\u9FA5]+$/;
+		 var mobileRe = /^1[3-9][0-9]{9}$/;
+	     $(function(){
+		    var container = $('.container');
+            var shadow = $('#shadow');
+			 var options = $('#sel');
+			 var subInfo = {
+				 name:'',
+			     phone:'',
+				 ifcount:'no',
+				 industrytype:0
+			 };
+			$('[e-type="merchantName"]').bind('input',function(){
+				subInfo.name = this.value.trim();
+			})
+			 $('[e-type="merchanttel"]').bind('input',function(){
+				 subInfo.phone = this.value.trim();
+			 })
+		    container.on('click','[e-type]',function(e){
+				var item = $(this);
+				var type = item.attr('e-type');
+				switch (type){
+					case 'industrytype':
+						if(options.css("display")=="none"){
+							options.css('display','block');
+							shadow.show();
+						}else{
+							options.css('display','none');
+							shadow.hide();
+						}
+						break;
+					case 'ifcount_div':
+						$('#chk1').attr('src',$('#chk1').attr('src')=='IMG/img1.png'?'IMG/img2.png':'IMG/img1.png');
+						subInfo.ifcount = $('#chk1').attr('src')=='IMG/img1.png'?'no':'yes';
+						break;
+					case 'option':
+						$('[e-type="option"]').css('color','black');
+						item.css('color', '#CD2626');
+						$('[e-type="option"]').removeClass('rightarrow');
+					     item.addClass('rightarrow');
+						$('#typeinput').val(item.text());
+						subInfo.industrytype = item.attr('value');
+						options.hide();
+						shadow.hide();
+						break;
+					case 'shadow':
+						options.hide();
+						shadow.hide();
+						break;
+					case 'submit':
+						if (subInfo.name.length == 0) {
+							alert( '请填写姓名');
+							return false;
+						} else if (subInfo.name.length < 2 || subInfo.name.length > 6) {
+							alert( '姓名长度为2-6个汉字');
+							return false;
+						} else if (!chineseNameRe.test(subInfo.name)) {
+							alert( '请输入中文名');
+							return false;
+						}else if (subInfo.phone.length == 0) {
+						    alert( '请输入手机号');
+							return false;
+				     	} else if (!mobileRe.test(subInfo.phone)) {
+						    alert( '请输入正确的手机号');
+							return false;
+					    }else if(subInfo.industrytype==0){
+							alert( '请选择行业类型');
+							return false;
+						}
+							alert('提交成功，数据为'+JSON.stringify(subInfo))
+						break;
+				}
+		    });
+	});
+
+
+     </script>
+</body>
+</html>
