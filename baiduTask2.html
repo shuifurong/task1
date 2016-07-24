@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task2</title>
+	<style type="text/css">
+		body{
+			margin:0;
+			padding:0;
+		}
+		.container{
+			padding-top: 1px;
+			padding-bottom: 1px;
+			background-color:#CCCCCC;		
+			font-family: "微软雅黑","华文细黑",Arial, Helvetica, sans-serif;
+			font-size: 16px;
+			line-height: 1.8em;
+		}
+		p{
+			text-indent: 20px;
+		}
+		article{
+			margin:20px;
+			background-color:#FFFFFF;
+			padding:30px 15px;
+		}
+		
+		h3{
+			color:#737373;
+		}
+		span{
+			color:#C2C2C2;
+		}
+		img{
+			width:25%;
+			height: 20% ;
+		}
+		.imgLayer{
+		  /*width: 263px;
+		  height: 250px;*/
+		  width: 20%;
+		  height: 30%;
+          border:1px solid #CCCCCC;
+          text-align: center;
+          margin:20px auto 20px 60px;
+		}
+		.imgBlock{
+			width:80%;
+			height: 75% ;
+            margin:15px auto;
+		}
+		table{
+			 border: solid #CCCCCC;
+			 border-width: 1px 0px 0px 1px;
+		}
+		td{
+             border: solid #CCCCCC;
+			 border-width: 0px 1px 1px 0px;
+			 
+		}
+		span.leftside{
+			display: inline-block;
+			width: 40%;
+			text-align: right;
+			color:black;
+		}
+		.gform{
+			margin:20px 0px;
+		}
+		input[type="text"],input[type="password"]{
+			height: 30px;
+		}
+		.rightside{
+			width: 50%;
+			text-align: left;
+			border:1px solid #CCCCCC;	
+		}
+		input[type="submit"]{
+			width:90%;
+			height: 40px;
+			margin-left: 4%;
+			background-color: blue;
+			color:white;
+			font-size: 18px;
+			border-radius:10px;
+		}	
+		textarea::-webkit-input-placeholder { color:black; font-size: 18px;}
+		textarea::-moz-placeholder { color:black; font-size: 18px;} /* firefox 19+ */
+		textarea::-ms-input-placeholder { color:black; font-size: 18px;} /* ie */
+		label { 
+			cursor: pointer; 
+			margin-bottom: 20px; 
+			width: 26px; 
+			height: 30px; 
+			line-height: 30px; 
+			margin-top: 6px; 
+			} 
+			
+			.label_check input, .label_radio input { 
+			margin-right: 5px; 
+			} 
+			.lblby .label_check, .lblby .label_radio { 
+			margin-right: 8px; 
+			} 
+			.lblby .label_radio, .lblby .label_check { 
+			background: url(jxc_btn.png) no-repeat; 
+			} 
+			.lblby .label_check { 
+			background-position: 0 0px; width: 100%;
+			padding-left: 30px;
+			}
+
+			.lblby label.c_on { 
+			background-position: 0 -26px; width: 100%;
+			padding-left: 30px;
+			}
+			.lblby .label_radio { 
+			background-position: 0 -54px;width: 100%;
+			padding-left: 30px;
+			} 
+			 
+			.lblby label.r_on { 
+			background-position: 0 -80px; width: 100%;
+			padding-left: 30px;
+			}
+			 
+			.lblby .label_check input, .lblby .label_radio input { 
+			position: absolute; 
+			left: -9999px; 
+			} 
+	</style>
+		
+	
+</head>
+<body>
+<div class="container">
+	<article>
+		<h2>文章一级标题</h2>
+		<h3>文章二级标题</h3>
+		<span>文章作者&nbsp;&nbsp;文章发表时间</span>
+		<p>这是很长很长的段落，这是很长很长的段落，这是很长很长的段落，这是很长很长的段落，这是很长很长的段落，这是很长很长的段落，这是很长很长的段落，这是很长很长的段落，这是很长很长的段落，这是很长很长的段落，这是很长很长的段落，这是很长很长的段落，换行了<br/>这是很长很长的段落，这是很长很长的段落，这是很长很长的段落，这是很长很长的段落，这是很长很长的段落，这是很长很长的段落，这是很长很长的段落，这是很长很长的段落，换行了<br/>这是很长很长的段落，这是很长很长的段落，这是很长很长的段落，这是很长很长的段落,<a href="http://ife.baidu.com">这里有一个链接到http://ife.baidu.com</a>这是很长很长的段落，这是很长很长的段落，这是很长很长的段落，这是很长很长的段落，这是很长很长的段落，这是很长很长的段落，这是很长很长的段落，这是很长很长的段落</p>
+		<img src="https://gss0.baidu.com/7LsWdDW5_xN3otqbppnN2DJv/lvpics/pic/item/562c11dfa9ec8a130c92d855f603918fa1ecc0ff.jpg" alt="丹麦风景图片">
+		<p>这是很长很长的段落，这是很长很长的段落，这是很长很长的段落，这是很长很长的段落，换行了<br/>这是很长很长的段落，这是很长很长的段落，这是很长很长的段落，这是很长很长的段落,<a href="http://ife.baidu.com">这里有一个链接到http://ife.baidu.com</a>这是很长很长的段落，这是很长很长的段落，这是很长很长的段落，这是很长很长的段落，这是很长很长的段落，这是很长很长的段落，这是很长很长的段落，这是很长很长的段落</p>
+	</article>
+	<article>
+		<h2>另一篇文章的一级标题</h2>
+		<h3>文章二级标题</h3>
+		<span>文章作者&nbsp;&nbsp;文章发表时间</span>
+        <p>这是很长很长的段落，这是很长很长的段落，这是很长很长的段落，这是很长很长的段落，这是很长很长的段落，这是很长很长的段落，这是很长很长的段落，这是很长很长的段落，换行了<br/>这是很长很长的段落，这是很长很长的段落，这是很长很长的段落，这是很长很长的段落,<a href="http://ife.baidu.com">这里有一个链接到http://ife.baidu.com</a>这是很长很长的段落，这是很长很长的段落，这是很长很长的段落，这是很长很长的段落，这是很长很长的段落，这是很长很长的段落，这是很长很长的段落，这是很长很长的段落</p>
+		<img src="https://gss0.baidu.com/7LsWdDW5_xN3otqbppnN2DJv/lvpics/pic/item/562c11dfa9ec8a130c92d855f603918fa1ecc0ff.jpg" alt="丹麦风景图片">
+		<ul style="list-style-type:none">
+			<li>列表项目一</li>
+			<li>列表项目二</li>
+			<li>列表项目三</li>
+		</ul>
+	</article>
+	<article>
+		<h2>图片</h2>
+		<div class="imgLayer"><div style="font-size:18px;text-indent:0;">好看的图片</div><img class="imgBlock" src="https://gss0.baidu.com/7LsWdDW5_xN3otqbppnN2DJv/lvpics/pic/item/562c11dfa9ec8a130c92d855f603918fa1ecc0ff.jpg"></div>
+		<div class="imgLayer"><div style="font-size:18px;text-indent:0;">好看的图片</div><img class="imgBlock" src="https://gss0.baidu.com/7LsWdDW5_xN3otqbppnN2DJv/lvpics/pic/item/562c11dfa9ec8a130c92d855f603918fa1ecc0ff.jpg"></div>
+		<div class="imgLayer"><div style="font-size:18px;text-indent:0;">好看的图片</div><img class="imgBlock" src="https://gss0.baidu.com/7LsWdDW5_xN3otqbppnN2DJv/lvpics/pic/item/562c11dfa9ec8a130c92d855f603918fa1ecc0ff.jpg"></div>
+		<div class="imgLayer"><div style="font-size:18px;text-indent:0;">好看的图片</div><img class="imgBlock" src="https://gss0.baidu.com/7LsWdDW5_xN3otqbppnN2DJv/lvpics/pic/item/562c11dfa9ec8a130c92d855f603918fa1ecc0ff.jpg"></div>
+		<div class="imgLayer"><div style="font-size:18px;text-indent:0;">好看的图片</div><img class="imgBlock" src="https://gss0.baidu.com/7LsWdDW5_xN3otqbppnN2DJv/lvpics/pic/item/562c11dfa9ec8a130c92d855f603918fa1ecc0ff.jpg"></div>
+		<div class="imgLayer"><div style="font-size:18px;text-indent:0;">好看的图片</div><img class="imgBlock" src="https://gss0.baidu.com/7LsWdDW5_xN3otqbppnN2DJv/lvpics/pic/item/562c11dfa9ec8a130c92d855f603918fa1ecc0ff.jpg"></div>
+		<div class="imgLayer"><div style="font-size:18px;text-indent:0;">好看的图片</div><img class="imgBlock" src="https://gss0.baidu.com/7LsWdDW5_xN3otqbppnN2DJv/lvpics/pic/item/562c11dfa9ec8a130c92d855f603918fa1ecc0ff.jpg"></div>
+		<div class="imgLayer"><div style="font-size:18px;text-indent:0;">好看的图片</div><img class="imgBlock" src="https://gss0.baidu.com/7LsWdDW5_xN3otqbppnN2DJv/lvpics/pic/item/562c11dfa9ec8a130c92d855f603918fa1ecc0ff.jpg"></div>
+	
+	
+	</article>
+	<article>
+		<h2>最后一篇文章的一级标题</h2>
+		<h3>文章二级标题</h3>
+		<span>文章作者&nbsp;&nbsp;文章发表时间</span>
+		<ol>
+			<li>排名1</li>
+			<li>排名2</li>
+			<li>排名3</li>
+		</ol>
+		<div>下面是一个表格</div>
+		<table style="width:100%;">
+			<tr style="color:white;background-color:black;font-style:bold;text-align:left;">
+				<th style="width:40%">表头</th>
+				<th style="width:40%">表头</th>
+				<th style="width:16%">表头</th>
+			</tr>
+			<tr>
+				<td>表内容单元格</td>
+				<td>表内容单元格</td>
+				<td><a href="#">操作</a></td>
+			</tr>
+			<tr>
+				<td>表内容单元格</td>
+				<td>表内容单元格</td>
+				<td><a href="#">操作</a></td>
+			</tr>
+			<tr>
+				<td>表内容单元格</td>
+				<td>表内容单元格</td>
+				<td><a href="#">操作</a></td>
+			</tr>
+			<tr>
+				<td>表内容单元格</td>
+				<td>表内容单元格</td>
+				<td><a href="#">操作</a></td>
+			</tr>
+			<tr style="text-align:left;background-color:#CCCCCC;">
+				<th>总计</th>
+				<th colspan="2">1000</th>
+			</tr>
+		</table>
+	</article>
+	<article>
+	<div style="position:relative;">
+		<img style="width:8px;height:40px;position:absolute;top:17px;"src="infontText.png" alt="标示文本开始"><h2 style="display:inline-block;padding-left:20px;">这里以后是一个侧栏，这是侧栏的标题</h2>
+	</div>
+		
+	
+	<div class="gform">
+		<span class="leftside">请输入邮箱地址：</span><input class="rightside" type="text" placeholder="这是一个文本输入框">
+	</div>
+	<div >邮箱地址请按要求格式输入</div>
+	<div class="gform">
+		<span class="leftside">请输入密码：</span><input class="rightside" type="password" placeholder="这是一个文本输入框">
+	</div>
+	<div class="gform">
+		<span class="leftside">请重复输入密码：</span><input class="rightside" type="password" placeholder="这是一个文本输入框">
+	</div>
+	
+	<div >密码请为6-16位英文数字</div>
+	<div class="gform lblby">
+		<span class="leftside">性别：</span>
+		<label class="label_radio r_on"> 
+		<input type="radio" value="1" checked="checked"  name="sample-radio" /> 男 </label> 
+		<label class="label_radio r_off"> 
+		<input type="radio" value="1" name="sample-radio" /> 
+		女 </label>
+	</div>
+	<div class="gform">
+		<span class="leftside">城市：</span><select class="rightside" >
+			<option value="1">北京</option>
+			<option value="2">上海</option>
+			<option value="3">武汉</option>
+		</select>
+	</div>
+	<div class="gform lblby">
+		<span class="leftside">爱好：</span>
+	      <label class="label_check c_on"> 
+			<input type="checkbox" checked="checked" value="1"  name="sample-checkbox-01" /> 
+			运动 </label> 
+			<label class="label_check"> 
+			<input type="checkbox" value="1"  name="sample-checkbox-02" /> 
+			艺术</label> 
+			<label class="label_check"> 
+			<input type="checkbox" value="1"  name="sample-checkbox-02" /> 
+			科学</label>
+	</div>
+	<div class="gform">
+		<span class="leftside">个人描述：</span><textarea class="rightside" name="description"  cols="30" rows="10" placeholder="这是一个多行输入框，输入您的个人描述"></textarea>
+	</div>
+	
+	      <input type="submit" value="确认提交">
+	</article>
+	<script src="jquery-2.2.4.js"></script>
+	<script type="text/javascript"> 
+		$(function(){ 
+			$("input[type='checkbox']").click(function(){ 
+			if($(this).is(':checked')){ 
+			$(this).attr("checked","checked"); 
+			$(this).parent().addClass("c_on"); 
+			}else{ 
+			$(this).removeAttr("checked"); 
+			$(this).parent().removeClass("c_on"); 
+			} 
+			});
+		$("input[type='radio']").click(function(){ 
+			$("input[type='radio']").removeAttr("checked"); 
+			$(this).attr("checked","checked"); 
+			$(this).parent().addClass("r_on").siblings().removeClass("r_on"); 
+			}); 
+		}); 
+		</script>
+</html>
